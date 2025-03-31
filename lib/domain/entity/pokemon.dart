@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:flutter_pokedex/domain/enum/pokemon_types.dart';
 
-class Pokemon {
+class Pokemon extends Equatable{
   final int id;
   final String name;
   final String imageUri;
@@ -12,4 +13,7 @@ class Pokemon {
     required this.imageUri,
     required this.types
   });
+
+  @override
+  List<Object> get props => [id, name, imageUri, types];
 }

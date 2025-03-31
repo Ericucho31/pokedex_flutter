@@ -1,14 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_pokedex/data/data_source/pokemon_data_source.dart';
+import 'package:flutter_pokedex/data/repositories/pokemon_repository.dart';
+import 'package:flutter_pokedex/domain/use_cases/get_all_pokemon_useCase.dart';
 import 'package:flutter_pokedex/presentation/screens/all_pokemon_screen.dart';
+import 'package:flutter_pokedex/presentation/screens/get_all_pokemon_screen.dart';
 import 'package:flutter_pokedex/presentation/widgets/pokemon_card.dart';
+import 'package:http/http.dart' as http;
 
 // Literalmente ejecuta la aplicacion
 void main() {
-  runApp(const MyApp());
+  final httpClient = http.Client();
+  final dataSource = PokemonDataSourceImp(client: httpClient);
+  final repository = PokemonRepository(dataSource); // tu implementación
+  final getAllPokemonUseCase = GetAllPokemonUseCase(pokemonRepository: repository);
+  runApp(MyApp(getAllPokemonUseCase: getAllPokemonUseCase));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final GetAllPokemonUseCase getAllPokemonUseCase;
+
+  const MyApp({super.key, required this.getAllPokemonUseCase});
 
   // This widget is the root of your application.
   @override
@@ -30,10 +41,10 @@ class MyApp extends StatelessWidget {
                 ],
               ),
             ),
-            body:  const TabBarView(
+            body:  TabBarView(
                 children: [
-                  MyHomePage(title: "HomePage"),
-                  AllPokemonScreen()
+                  const MyHomePage(title: "HomePage"),
+                  GetAllPokemonScreen(getAllPokemonUseCase: getAllPokemonUseCase)
                 ]
             ),
           )),
