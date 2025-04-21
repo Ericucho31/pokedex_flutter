@@ -54,7 +54,8 @@ dependencies:
   rive: ^0.11.1
 
   # Inyección de Dependencias
-  get_it: ^7.6.0
+  get_it: ^8.0.3
+  injector: ^4.0.0
 
   # JSON Parsing y Modelado
   freezed: ^2.4.5

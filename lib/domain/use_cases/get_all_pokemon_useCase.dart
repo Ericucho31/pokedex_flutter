@@ -1,11 +1,11 @@
 
 import 'package:flutter_pokedex/core/errors.dart';
 import 'package:flutter_pokedex/data/model/pokemon_get_all_model.dart';
-import 'package:flutter_pokedex/data/repositories/pokemon_repository.dart';
+import 'package:flutter_pokedex/domain/interfaces/IPokemonRepository.dart';
 import 'package:fpdart/fpdart.dart';
 
 class GetAllPokemonUseCase{
-  final PokemonRepository pokemonRepository;
+  final IPokemonRespository pokemonRepository;
 
   GetAllPokemonUseCase({required this.pokemonRepository});
 
