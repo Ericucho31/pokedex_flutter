@@ -1,7 +1,7 @@
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pokedex/core/errors.dart';
-import 'package:flutter_pokedex/data/model/pokemon_get_all_model.dart';
+import 'package:flutter_pokedex/domain/model/pokemon_get_all_model.dart';
 import 'package:flutter_pokedex/domain/use_cases/get_all_pokemon_useCase.dart';
 import 'package:flutter_pokedex/presentation/bloc/pokemon_get_all_bloc/pokemon_get_all_event.dart';
 import 'package:flutter_pokedex/presentation/bloc/pokemon_get_all_bloc/pokemon_get_all_state.dart';

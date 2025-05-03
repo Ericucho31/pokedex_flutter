@@ -2,9 +2,8 @@
 import 'package:flutter_pokedex/core/errors.dart';
 import 'package:flutter_pokedex/data/data_source/pokemon_data_source.dart';
 import 'package:flutter_pokedex/data/dto/pokemon_get_all_dto.dart';
-import 'package:flutter_pokedex/data/dto/pokemon_get_details/pokemon_get_details_dto.dart';
-import 'package:flutter_pokedex/data/model/pokemon_get_all_model.dart';
-import 'package:flutter_pokedex/data/model/pokemon_model.dart';
+import 'package:flutter_pokedex/data/dto/pokemon_get_details/PokemonGetDetailsDTO.dart';
+import 'package:flutter_pokedex/domain/model/pokemon_get_all_model.dart';
 import 'package:flutter_pokedex/domain/interfaces/IPokemonRepository.dart';
 import 'package:fpdart/src/either.dart';
 import '../../core/constants.dart';
@@ -42,9 +41,9 @@ class PokemonRepository implements IPokemonRespository {
   }
 
   @override
-  Future<Either<PokeError, PokemonGetDetailsDTO>> getPokemonDetails(int pokemonId) async {
+  Future<Either<PokeError, PokemonDetailsDTO>> getPokemonDetails(int pokemonId) async {
     try {
-      final PokemonGetDetailsDTO pokemonDetails = await pokemonDataSource.getPokemonDetails(pokemonId);
+      final PokemonDetailsDTO pokemonDetails = await pokemonDataSource.getPokemonDetails(pokemonId);
       return Right(pokemonDetails);
     }
     catch(e)

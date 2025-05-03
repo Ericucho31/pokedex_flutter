@@ -22,7 +22,26 @@ class DetailsPokemonDisplay extends StatelessWidget {
             ));
 
           case PokemonLoaded():
-            return Text(state.pokemonDetails.stats[0].base_stat.toString());
+            return Center(
+              child: Column(
+                children: [
+                  Text(state.pokemonDetails.id.toString()),
+                  Text(state.pokemonDetails.name),
+                  ...state.pokemonDetails.types.map((type) =>
+                      Text(
+                        type.name, style: TextStyle(color: type.color),
+                      )).toList(),
+                  Image.network(
+                    state.pokemonDetails.urlImage,
+                    fit: BoxFit.fill,
+                  ),
+                  ...state.pokemonDetails.abillities.map((ability) => Text(
+                      "Abillities: ${ability.name}")).toList(),
+                  Text("Weight : ${state.pokemonDetails.weight.toString()}"),
+                  Text("Height : ${state.pokemonDetails.height.toString()}"),
+                ],
+              ),
+            );
 
           default:
             return const Center(child: Text('Estado no manejado'));

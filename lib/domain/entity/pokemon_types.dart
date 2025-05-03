@@ -3,34 +3,34 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-enum PokemonTypes {
+enum PokemonTypeEnum {
+  unknown,
   normal,
-  fire,
-  water,
-  electric,
-  grass,
-  ice,
   fighting,
+  flying,
   poison,
   ground,
-  flying,
-  psychic,
-  bug,
   rock,
+  bug,
   ghost,
+  steel,
+  fire,
+  water,
+  grass,
+  electric,
+  psychic,
+  ice,
   dragon,
   dark,
-  steel,
-  fairy,
-  unknown;
+  fairy;
 
-  static PokemonTypes fromString(String type) {
+  static PokemonTypeEnum fromString(String type) {
     try {
-      return PokemonTypes.values.firstWhere(
+      return PokemonTypeEnum.values.firstWhere(
           (e) => e.name.toLowerCase() == type.toLowerCase()
       );
     } catch(_) {
-      return PokemonTypes.unknown;
+      return PokemonTypeEnum.unknown;
     }
   }
 
@@ -38,43 +38,43 @@ enum PokemonTypes {
 
   Color get color {
     switch (this) {
-      case PokemonTypes.grass:
+      case PokemonTypeEnum.grass:
         return Colors.green;
-      case PokemonTypes.fire:
+      case PokemonTypeEnum.fire:
         return Colors.red;
-      case PokemonTypes.water:
+      case PokemonTypeEnum.water:
         return Colors.blue;
-      case PokemonTypes.electric:
+      case PokemonTypeEnum.electric:
         return Colors.yellow;
-      case PokemonTypes.psychic:
+      case PokemonTypeEnum.psychic:
         return Colors.purple;
-      case PokemonTypes.fighting:
+      case PokemonTypeEnum.fighting:
         return Colors.orange;
-      case PokemonTypes.rock:
+      case PokemonTypeEnum.rock:
         return Colors.brown;
-      case PokemonTypes.ground:
+      case PokemonTypeEnum.ground:
         return Colors.brown.shade300;
-      case PokemonTypes.flying:
+      case PokemonTypeEnum.flying:
         return Colors.indigo.shade200;
-      case PokemonTypes.bug:
+      case PokemonTypeEnum.bug:
         return Colors.lightGreen;
-      case PokemonTypes.poison:
+      case PokemonTypeEnum.poison:
         return Colors.deepPurple;
-      case PokemonTypes.normal:
+      case PokemonTypeEnum.normal:
         return Colors.grey;
-      case PokemonTypes.ghost:
+      case PokemonTypeEnum.ghost:
         return Colors.indigo;
-      case PokemonTypes.dragon:
+      case PokemonTypeEnum.dragon:
         return Colors.indigo.shade800;
-      case PokemonTypes.dark:
+      case PokemonTypeEnum.dark:
         return Colors.grey.shade800;
-      case PokemonTypes.steel:
+      case PokemonTypeEnum.steel:
         return Colors.blueGrey;
-      case PokemonTypes.fairy:
+      case PokemonTypeEnum.fairy:
         return Colors.pink;
-      case PokemonTypes.ice:
+      case PokemonTypeEnum.ice:
         return Colors.lightBlue;
-      case PokemonTypes.unknown:
+      case PokemonTypeEnum.unknown:
       return Colors.grey;
     }
   }
