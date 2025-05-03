@@ -1,7 +1,6 @@
 
 import 'package:equatable/equatable.dart';
-import 'package:flutter_pokedex/data/model/pokemon_get_all_model.dart';
-import 'package:flutter_pokedex/data/model/pokemon_model.dart';
+import 'package:flutter_pokedex/domain/model/pokemon_get_all_model.dart';
 
 sealed class PokemonGetAllState extends Equatable {
   const PokemonGetAllState();

@@ -1,6 +1,6 @@
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_pokedex/data/dto/pokemon_get_details/pokemon_get_details_dto.dart';
+import 'package:flutter_pokedex/domain/model/pokemon_get_details_model.dart';
 import 'package:flutter_pokedex/domain/use_cases/get_pokemon_details_useCase.dart';
 import 'package:flutter_pokedex/presentation/bloc/pokemon_get_details_bloc/pokemon_get_details_event.dart';
 import 'package:flutter_pokedex/presentation/bloc/pokemon_get_details_bloc/pokemon_get_details_state.dart';
@@ -23,7 +23,7 @@ class PokemonGetDetailsBloc extends Bloc<PokemonGetDetailsEvent, PokemonGetDetai
     try{
       if(state is PokemonInitial) {
         emit(PokemonLoading());
-        final Either<PokeError, PokemonGetDetailsDTO> eitherResult = await getDetailsPokemonUseCase(pokemonId);
+        final Either<PokeError, PokemonGetDetailsModel> eitherResult = await getDetailsPokemonUseCase(pokemonId);
         eitherResult.fold(
                 (error) => emit(PokemonError(error.errorMessage)),
                 (result) => emit(PokemonLoaded(pokemonDetails: result))
